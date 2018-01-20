@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import Header from './components/header/Header.jsx'
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
+const App = () => {
+  return (
       <div className="App">
         <Header />
       </div>
     );
-  }
 }
 
 export default App;

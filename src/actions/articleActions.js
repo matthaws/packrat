@@ -9,7 +9,7 @@ export const receiveAllArticles = articles => {
 };
 
 export const receiveArticle = article => {
-  type: RECEIVE_ARTICLE, article;
+  type: RECEIVE_ARTICLE, article
 };
 
 export const fetchAllArticles = () => async dispatch => {

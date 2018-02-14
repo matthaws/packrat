@@ -1,5 +1,5 @@
 import React from "react";
-import mouse from "../../../public/mouse-512.png";
+import mouse from "./mouse-512.png";
 
 const Welcome = () => (
   <main id="welcome">

@@ -27,4 +27,5 @@ export const fetchArticle = async (auth_token, articleId) => {
     method: "get",
     headers: authHeader(auth_token)
   });
+  return article
 };

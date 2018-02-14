@@ -5,6 +5,7 @@ import { fetchAllArticles } from "../../actions/articleActions.js"
 const mapStateToProps = (state) => {
   return {
     articles: Object.values(state.articles),
+    categories: state.categories,
   };
 };
 

@@ -13,10 +13,12 @@ class ArticleIndex extends React.Component {
       <table>
         <tbody>
           <tr>
+            <th>Categories</th>
             <th>Title</th>
             <th>Description</th>
+            <th>Posted On</th>
           </tr>
-          {this.props.articles.map((article, i) => <ArticleIndexItem key={i} article={article} />)}
+          {this.props.articles.map((article, i) => <ArticleIndexItem key={i} article={article} categories={this.props.categories}/>)}
         </tbody>
       </table>
     );

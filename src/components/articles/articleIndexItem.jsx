@@ -1,4 +1,5 @@
 import React from 'react';
+import "./articleIndexItem.css";
 
 const ArticleIndexItem = ({article}) => {
   return (

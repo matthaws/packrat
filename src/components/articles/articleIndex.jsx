@@ -1,5 +1,6 @@
 import React from "react";
 import ArticleIndexItem from "./articleIndexItem";
+import "./articleIndex.css";
 
 class ArticleIndex extends React.Component {
 
@@ -7,16 +8,7 @@ class ArticleIndex extends React.Component {
     this.props.fetchAllArticles();
   }
 
-  renderRows() {
-    return this.props.articles.map((article, i) => {
-      return (
-      <ArticleIndexItem key={i} article={article} />
-      );
-    });
-  }
-
   render() {
-
     return (
       <table>
         <tbody>
@@ -24,7 +16,7 @@ class ArticleIndex extends React.Component {
             <th>Title</th>
             <th>Description</th>
           </tr>
-          {this.renderRows()}
+          {this.props.articles.map((article, i) => <ArticleIndexItem key={i} article={article} />)}
         </tbody>
       </table>
     );

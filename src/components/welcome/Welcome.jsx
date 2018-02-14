@@ -1,6 +1,7 @@
 import React from "react";
 import mouse from "./mouse-512.png";
 import ArticleIndex from "../articles/articleIndexContainer.js";
+import "./welcome.css";
 
 const Welcome = () => (
   <main id="welcome">

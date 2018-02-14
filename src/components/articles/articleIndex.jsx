@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import ArticleIndexItem from "./articleIndexItem";
 
 class ArticleIndex extends React.Component {
 
@@ -9,10 +10,7 @@ class ArticleIndex extends React.Component {
   renderRows() {
     return this.props.articles.map((article, i) => {
       return (
-        <tr key={i}>
-          <td><a href={article.url} target="_blank">{article.title}</a></td>
-          <td>{article.description}</td>
-        </tr>
+      <ArticleIndexItem key={i} article={article} />
       );
     });
   }

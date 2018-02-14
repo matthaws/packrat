@@ -4,9 +4,11 @@ import { receiveErrors } from "./errorActions.js";
 export const RECEIVE_ALL_ARTICLES = "RECEIVE_ALL_ARTICLES";
 export const RECEIVE_ARTICLE = "RECEIVE_ARTICLE";
 
-export const receiveAllArticles = articles => {
+export const receiveAllArticles = response => {
   return {
-    type: RECEIVE_ALL_ARTICLES, articles
+    type: RECEIVE_ALL_ARTICLES,
+    articles: response.articles,
+    categories: response.categories,
   };
 };
 
@@ -21,7 +23,7 @@ export const fetchAllArticles = () => async dispatch => {
   if (response.errors) {
     dispatch(receiveErrors(response.errors));
   } else {
-    dispatch(receiveAllArticles(response.articles));
+    dispatch(receiveAllArticles(response));
   }
 };
 

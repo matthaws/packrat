@@ -2,7 +2,13 @@ import React from "react";
 
 class ArticleFilter extends React.Component {
 
-  checkboxes() {
+
+  clearFilter() {
+    this.props.updateFilterQuery("");
+    this.props.updateFilterCategories();
+  }
+
+  renderCheckboxes() {
     return this.props.categories.map((category, i) => {
       return (
         <label key={i}>{category.subject}
@@ -20,8 +26,8 @@ class ArticleFilter extends React.Component {
           <label>Title/Description:
             <input type="text" value={this.props.query} onChange={(e) => this.props.updateFilterQuery(e.target.value)}/>
           </label>
-          {this.checkboxes()}
-          <button onClick={() => {this.props.updateFilterQuery(""); this.props.updateFilterCategories()}}>Remove Filters</button>
+          {this.renderCheckboxes()}
+          <button onClick={this.clearFilter.bind(this)}>Remove Filters</button>
         </div>
       );
     } else {

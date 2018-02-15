@@ -7,8 +7,7 @@ const categoriesReducer = (state = {}, action) => {
       newState = Object.assign({}, state, action.categories);
       break;
     default:
-      newState = Object.assign({}, state);
-      break;
+      return state;
   }
   return newState;
 };

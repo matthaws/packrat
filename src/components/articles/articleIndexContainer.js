@@ -1,10 +1,11 @@
 import { connect } from "react-redux";
 import ArticleIndex from "./articleIndex.jsx";
 import { fetchAllArticles } from "../../actions/articleActions.js"
+import { filteredArticles } from "../../util/filter.js";
 
 const mapStateToProps = (state) => {
   return {
-    articles: Object.values(state.articles),
+    articles: filteredArticles(state),
     categories: state.categories,
   };
 };

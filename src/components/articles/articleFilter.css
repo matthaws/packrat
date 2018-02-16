@@ -17,8 +17,12 @@
 .article-filter .categories {
   position: relative;
   width: 300px;
+  text-align: left;
 }
 
+.article-filter .categories div:hover {
+  cursor: pointer;
+}
 .article-filter .categories ul {
   display: flex;
   flex-direction: column;
@@ -29,4 +33,6 @@
   top: 10px;
   left: 0px;
   background: white;
+  border: 1px solid grey;
+  z-index: 1;
 }

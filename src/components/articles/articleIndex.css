@@ -4,3 +4,27 @@ table, th, td {
   padding: 10px;
   text-align: left;
 }
+
+table, tbody {
+  width: 100%;
+}
+
+th {
+  background: #FFF056;
+}
+
+th:nth-child(1) {
+  width: 20%;
+}
+
+th:nth-child(2) {
+  width: 30%;
+}
+
+th:nth-child(3) {
+  width: 40%;
+}
+
+th:nth-child(4) {
+  width: 10%;
+}

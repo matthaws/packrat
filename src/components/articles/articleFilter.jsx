@@ -18,6 +18,8 @@ class ArticleFilter extends React.Component {
   clearFilter() {
     this.props.updateFilterQuery("");
     this.props.updateFilterCategories();
+    this.props.updateFilterDates("", true);
+    this.props.updateFilterDates("", false);
   }
 
   renderCheckboxes() {

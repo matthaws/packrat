@@ -6,7 +6,11 @@ export const filteredArticles = (state) => {
     state.categories[categoryId].articleIds.forEach((articleId) => {
       const title = state.articles[articleId].title.toLowerCase();
       const description = (state.articles[articleId].description || "").toLowerCase();
+      const articleDate = state.articles[articleId].createdAt.slice(0, 10);
+      const postedAfter = state.ui.articleFilter.dateRange[0];
+      const postedBefore = state.ui.articleFilter.dateRange[1]
       if (title.includes(query) || (description.includes(query))) {
+        if ((!postedAfter || postedAfter <= articleDate) && (!postedBefore || postedBefore >= articleDate))
         articles[articleId] = state.articles[articleId];
       }
     });

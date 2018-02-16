@@ -43,8 +43,10 @@ class ArticleFilter extends React.Component {
         <label key={3}>Title/Description:
           <input type="text" value={this.state.query} onChange={(e) => this.updateFilterQuery(e.target.value)}/>
         </label>,
-        <div key={4} className="categories" onClick={() => this.props.toggleOpenClose("categoryList")}>
-          {this.props.categoryListOpen ? "Hide List" : "Select Categories"}
+        <div key={4} className="categories">
+          <div onClick={() => this.props.toggleOpenClose("categoryList")}>
+            {this.props.categoryListOpen ? "Hide Categories" : `Select Categories (${this.props.selectedCategories.length} selected)`}
+          </div>
           {this.renderCheckboxes()}
         </div>,
         <label key={5}>Posted After:

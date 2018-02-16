@@ -5,6 +5,7 @@ import {
   updateFilterQuery,
   updateFilterCategories,
   updateFilterDates,
+  clearFilters,
 } from "../../actions/uiActions.js";
 
 const mapStateToProps = (state) => {
@@ -23,6 +24,7 @@ const mapDispatchToProps = (dispatch) => {
     updateFilterQuery: (query) => dispatch(updateFilterQuery(query)),
     updateFilterCategories: (categoryId) => dispatch(updateFilterCategories(categoryId)),
     updateFilterDates: (date, isStart) => dispatch(updateFilterDates(date, isStart)),
+    clearFilters: () => dispatch(clearFilters()),
   }
 }
 

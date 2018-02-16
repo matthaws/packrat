@@ -15,13 +15,6 @@ class ArticleFilter extends React.Component {
     this.debouncedUpdateFilterQuery(false, query);
   }
 
-  clearFilter() {
-    this.props.updateFilterQuery("");
-    this.props.updateFilterCategories();
-    this.props.updateFilterDates("", true);
-    this.props.updateFilterDates("", false);
-  }
-
   renderCheckboxes() {
     return this.props.categories.map((category, i) => {
       return (
@@ -36,7 +29,7 @@ class ArticleFilter extends React.Component {
     const filterContent = this.props.open ? (
       [
         <button key={1} onClick={this.props.toggleOpenClose}>Hide Filters</button>,
-        <button key={2} onClick={this.clearFilter.bind(this)}>Remove Filters</button>,
+        <button key={2} onClick={this.props.clearFilters}>Remove Filters</button>,
         <label key={3}>Title/Description:
           <input type="text" value={this.state.query} onChange={(e) => this.updateFilterQuery(e.target.value)}/>
         </label>,

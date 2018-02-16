@@ -2,6 +2,7 @@ export const TOGGLE_OPEN_CLOSE = "TOGGLE_OPEN_CLOSE";
 export const UPDATE_FILTER_CATEGORY = "UPDATE_FILTER_CATEGORY";
 export const UPDATE_FILTER_QUERY = "UPDATE_FILTER_QUERY";
 export const UPDATE_FILTER_DATES = "UPDATE_FILTER_DATES";
+export const CLEAR_FILTERS = "CLEAR_FILTERS";
 
 export const toggleOpenClose = (component) => {
   return {
@@ -31,3 +32,9 @@ export const updateFilterDates = (date, isStart) => {
     isStart,
   };
 };
+
+export const clearFilters = () => {
+  return {
+    type: CLEAR_FILTERS,
+  }
+}

@@ -3,10 +3,10 @@ import {
   UPDATE_FILTER_CATEGORY,
   UPDATE_FILTER_QUERY,
   UPDATE_FILTER_DATES,
+  CLEAR_FILTERS,
 } from "../actions/uiActions";
+import { merge } from "lodash";
 
-const today = new Date();
-// const defaultAfter = today.getFullYear() + " " + today.getFu;
 const initialState = {
   articleFilter: {
     categories: [],
@@ -19,7 +19,7 @@ const initialState = {
 };
 
 const uiReducer = (state = initialState, action) => {
-  const newState = Object.assign({}, state);
+  let newState = merge({}, state);
   switch (action.type) {
     case TOGGLE_OPEN_CLOSE:
       newState.openClose[action.component] = !newState.openClose[action.component];
@@ -42,6 +42,10 @@ const uiReducer = (state = initialState, action) => {
       } else {
         newState.articleFilter.dateRange[1] = action.date;
       }
+      break;
+    case CLEAR_FILTERS:
+      newState = merge({}, initialState);
+      newState.openClose.articleFilter = true;
       break;
     default:
       return state

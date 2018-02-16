@@ -1,0 +1,20 @@
+.article-filter {
+  width: 100%;
+  display: flex;
+  align-items: center
+}
+
+.article-filter button, input {
+  border-radius: 7px;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+.article-filter button, label {
+  margin: 5px 10px;
+}
+
+.article-filter .categories {
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -1,7 +1,19 @@
 import React from "react";
+import { debounce } from "../../util/debounce.js";
+import "./articleFilter.css";
 
 class ArticleFilter extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {query: ""};
+    this.debouncedUpdateFilterQuery = debounce(this.props.updateFilterQuery, 500)
+  }
+
+  updateFilterQuery(query) {
+    this.setState({query});
+    this.debouncedUpdateFilterQuery(false, query);
+  }
 
   clearFilter() {
     this.props.updateFilterQuery("");
@@ -19,24 +31,28 @@ class ArticleFilter extends React.Component {
   }
 
   render() {
-    if (this.props.open) {
-      return (
-        <div>
-          <button onClick={this.props.toggleOpenClose}>Hide Filters</button>
-          <label>Title/Description:
-            <input type="text" value={this.props.query} onChange={(e) => this.props.updateFilterQuery(e.target.value)}/>
-          </label>
-          {this.renderCheckboxes()}
-          <button onClick={this.clearFilter.bind(this)}>Remove Filters</button>
+    const filterContent = this.props.open ? (
+      [
+        <button key={1} onClick={this.props.toggleOpenClose}>Hide Filters</button>,
+        <button key={2} onClick={this.clearFilter.bind(this)}>Remove Filters</button>,
+        <label key={3}>Title/Description:
+        <input key={4} type="text" value={this.state.query} onChange={(e) => this.updateFilterQuery(e.target.value)}/>
+        </label>,
+        <div key={5} className="categories">
+        {this.renderCheckboxes()}
         </div>
-      );
-    } else {
-      return (
-        <button onClick={this.props.toggleOpenClose}>
-          Show Filters
-        </button>
-      )
-    }
+      ]
+    ) : (
+      <button onClick={this.props.toggleOpenClose}>
+        Show Filters
+      </button>
+    );
+
+    return (
+      <div className="article-filter">
+        {filterContent}
+      </div>
+    );
   }
 }
 

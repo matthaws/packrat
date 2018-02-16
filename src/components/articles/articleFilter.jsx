@@ -19,6 +19,11 @@ class ArticleFilter extends React.Component {
     this.props.updateFilterDates(date, isStart);
   }
 
+  clearFilters() {
+    this.setState({query: ""});
+    this.props.clearFilters();
+  }
+
   renderCheckboxes() {
     if (this.props.categoryListOpen) {
       return (
@@ -39,7 +44,7 @@ class ArticleFilter extends React.Component {
     const filterContent = this.props.filterOpen ? (
       [
         <button key={1} onClick={() => this.props.toggleOpenClose("articleFilter")}>Hide Filters</button>,
-        <button key={2} onClick={this.props.clearFilters}>Remove Filters</button>,
+        <button key={2} onClick={this.clearFilters.bind(this)}>Remove Filters</button>,
         <label key={3}>Title/Description:
           <input type="text" value={this.state.query} onChange={(e) => this.updateFilterQuery(e.target.value)}/>
         </label>,

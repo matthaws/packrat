@@ -4,6 +4,7 @@ import {
   UPDATE_FILTER_QUERY,
   UPDATE_FILTER_DATES,
   CLEAR_FILTERS,
+  UPDATE_SORT,
 } from "../actions/uiActions";
 import { merge } from "lodash";
 
@@ -16,7 +17,19 @@ const initialState = {
   openClose: {
     articleFilter: false,
     categoryList: false,
-  }
+  },
+  articleSortSettings: {
+    orderOfPriority: ["createdAt", "title", "description"],
+    title: {
+      order: 1,
+    },
+    description: {
+      order: 1,
+    },
+    createdAt: {
+      order: 1,
+    },
+  },
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -47,6 +60,11 @@ const uiReducer = (state = initialState, action) => {
     case CLEAR_FILTERS:
       newState = merge({}, initialState);
       newState.openClose.articleFilter = true;
+      break;
+    case UPDATE_SORT:
+      newState.articleSortSettings[action.field].order = action.order;
+      newState.articleSortSettings.orderOfPriority = newState.articleSortSettings.orderOfPriority.filter((field) => field !== action.field);
+      newState.articleSortSettings.orderOfPriority.unshift(action.field);
       break;
     default:
       return state

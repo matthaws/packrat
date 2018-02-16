@@ -1,11 +1,13 @@
 import { connect } from "react-redux";
 import ArticleIndex from "./articleIndex.jsx";
 import { fetchAllArticles } from "../../actions/articleActions.js"
-import { filteredArticles } from "../../util/filter.js";
+import { updateSort } from "../../actions/uiActions.js";
+import { filterArticles } from "../../util/filter.js";
+import { sortArticles } from "../../util/sorters.js";
 
 const mapStateToProps = (state) => {
   return {
-    articles: filteredArticles(state),
+    articles: sortArticles(filterArticles(state), state.ui.articleSortSettings),
     categories: state.categories,
   };
 };
@@ -13,6 +15,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchAllArticles: () => dispatch(fetchAllArticles()),
+    updateSort: (field, order) => dispatch(updateSort(field, order)),
   };
 };
 

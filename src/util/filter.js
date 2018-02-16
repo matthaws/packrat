@@ -28,8 +28,7 @@ const filterByCategory = (state) => {
   return Object.values(articles);
 }
 
-export const filteredArticles = (state) => {
-  const query = state.ui.articleFilter.query.toLowerCase();
+export const filterArticles = (state) => {
   if (state.ui.articleFilter.categories.length > 0) {
     return filterByCategory(state);
   } else {

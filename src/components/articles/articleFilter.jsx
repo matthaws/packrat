@@ -20,25 +20,32 @@ class ArticleFilter extends React.Component {
   }
 
   renderCheckboxes() {
-    return this.props.categories.map((category, i) => {
+    if (this.props.categoryListOpen) {
       return (
-        <label key={i}>{category.subject}
-          <input type="checkbox" checked={this.props.selectedCategories.includes(category.id)} onChange={() => this.props.updateFilterCategories(category.id)}/>
-        </label>
+        <ul>
+          {this.props.categories.map((category, i) => {
+            return (
+              <label key={i}>{category.subject}
+                <input type="checkbox" checked={this.props.selectedCategories.includes(category.id)} onChange={() => this.props.updateFilterCategories(category.id)}/>
+              </label>
+            );
+          })}
+        </ul>
       );
-    });
+    }
   }
 
   render() {
-    const filterContent = this.props.open ? (
+    const filterContent = this.props.filterOpen ? (
       [
-        <button key={1} onClick={this.props.toggleOpenClose}>Hide Filters</button>,
+        <button key={1} onClick={() => this.props.toggleOpenClose("articleFilter")}>Hide Filters</button>,
         <button key={2} onClick={this.props.clearFilters}>Remove Filters</button>,
         <label key={3}>Title/Description:
           <input type="text" value={this.state.query} onChange={(e) => this.updateFilterQuery(e.target.value)}/>
         </label>,
-        <div key={4} className="categories">
-        {this.renderCheckboxes()}
+        <div key={4} className="categories" onClick={() => this.props.toggleOpenClose("categoryList")}>
+          {this.props.categoryListOpen ? "Hide List" : "Select Categories"}
+          {this.renderCheckboxes()}
         </div>,
         <label key={5}>Posted After:
           <input
@@ -56,7 +63,7 @@ class ArticleFilter extends React.Component {
         </label>
       ]
     ) : (
-      <button onClick={this.props.toggleOpenClose}>
+      <button onClick={() => this.props.toggleOpenClose("articleFilter")}>
         Show Filters
       </button>
     );

@@ -15,6 +15,7 @@ const initialState = {
   },
   openClose: {
     articleFilter: false,
+    categoryList: false,
   }
 };
 

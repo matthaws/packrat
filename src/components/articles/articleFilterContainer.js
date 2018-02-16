@@ -11,7 +11,8 @@ import {
 const mapStateToProps = (state) => {
   return {
     categories: Object.values(state.categories),
-    open: state.ui.openClose.articleFilter,
+    filterOpen: state.ui.openClose.articleFilter,
+    categoryListOpen: state.ui.openClose.categoryList,
     selectedCategories: state.ui.articleFilter.categories,
     query: state.ui.articleFilter.query,
     dateRange: state.ui.articleFilter.dateRange,
@@ -20,7 +21,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleOpenClose: () => dispatch(toggleOpenClose("articleFilter")),
+    toggleOpenClose: (componentName) => dispatch(toggleOpenClose(componentName)),
     updateFilterQuery: (query) => dispatch(updateFilterQuery(query)),
     updateFilterCategories: (categoryId) => dispatch(updateFilterCategories(categoryId)),
     updateFilterDates: (date, isStart) => dispatch(updateFilterDates(date, isStart)),

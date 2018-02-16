@@ -5,10 +5,12 @@ const filterByQuery = (article, query) => {
 }
 
 const filterByDate = (article, dateRange) => {
-  const articleDate = article.createdAt.slice(0, 10);
+  let articleDate = new Date(article.createdAt)
+  articleDate.setMinutes(articleDate.getMinutes() - articleDate.getTimezoneOffset());
+  articleDate = articleDate.toJSON().slice(0, 10);
   const postedAfter = dateRange[0];
   const postedBefore = dateRange[1];
-  return (!postedAfter || postedAfter <= articleDate) && (!postedBefore || postedBefore >= articleDate)
+  return (!postedAfter || postedAfter < articleDate) && (!postedBefore || postedBefore > articleDate)
 }
 
 const filterByCategory = (state) => {

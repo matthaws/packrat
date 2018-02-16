@@ -15,6 +15,10 @@ class ArticleFilter extends React.Component {
     this.debouncedUpdateFilterQuery(false, query);
   }
 
+  updateFilterDates(date, isStart) {
+    this.props.updateFilterDates(date, isStart);
+  }
+
   renderCheckboxes() {
     return this.props.categories.map((category, i) => {
       return (
@@ -36,18 +40,18 @@ class ArticleFilter extends React.Component {
         <div key={4} className="categories">
         {this.renderCheckboxes()}
         </div>,
-        <label key={5}>After:
+        <label key={5}>Posted After:
           <input
           type="date"
           value={this.props.dateRange[0]}
-          onChange={(e) => {this.props.updateFilterDates(e.target.value, true)} }
+          onChange={(e) => {this.updateFilterDates(e.target.value, true)} }
           max={this.props.dateRange[1]}/>
         </label>,
-        <label key={6}>Before:
+        <label key={6}>Posted Before:
           <input
           type="date"
           value={this.props.dateRange[1]}
-          onChange={(e) => {this.props.updateFilterDates(e.target.value, false)} }
+          onChange={(e) => {this.updateFilterDates(e.target.value, false)} }
           min={this.props.dateRange[0]}/>
         </label>
       ]

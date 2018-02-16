@@ -2,13 +2,16 @@ import {
   TOGGLE_OPEN_CLOSE,
   UPDATE_FILTER_CATEGORY,
   UPDATE_FILTER_QUERY,
+  UPDATE_FILTER_DATES,
 } from "../actions/uiActions";
 
+const today = new Date();
+// const defaultAfter = today.getFullYear() + " " + today.getFu;
 const initialState = {
   articleFilter: {
     categories: [],
     query: "",
-    dateRange: [null, null]
+    dateRange: ["", ""]
   },
   openClose: {
     articleFilter: false,
@@ -32,6 +35,13 @@ const uiReducer = (state = initialState, action) => {
       break;
     case UPDATE_FILTER_QUERY:
       newState.articleFilter.query = action.query;
+      break;
+    case UPDATE_FILTER_DATES:
+      if (action.isStart) {
+        newState.articleFilter.dateRange[0] = action.date;
+      } else {
+        newState.articleFilter.dateRange[1] = action.date;
+      }
       break;
     default:
       return state

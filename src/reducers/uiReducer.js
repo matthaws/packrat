@@ -58,7 +58,8 @@ const uiReducer = (state = initialState, action) => {
       }
       break;
     case CLEAR_FILTERS:
-      newState = merge({}, initialState);
+      newState = merge({}, state);
+      newState.articleFilter = initialState.articleFilter;
       newState.openClose.articleFilter = true;
       break;
     case UPDATE_SORT:

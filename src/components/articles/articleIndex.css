@@ -1,0 +1,38 @@
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px;
+  text-align: left;
+}
+
+table, tbody {
+  width: 100%;
+}
+
+th {
+  background: #FFF056;
+  position: sticky;
+  top: -1px;
+}
+
+th:nth-child(1) {
+  width: 20%;
+}
+
+th:nth-child(2) {
+  width: 30%;
+}
+
+th:nth-child(3) {
+  width: 40%;
+}
+
+th:nth-child(4) {
+  width: 10%;
+}
+
+th button {
+  background: white;
+  border: 1px solid black;
+  margin: 0 5px;
+}

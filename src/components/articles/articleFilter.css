@@ -1,0 +1,38 @@
+.article-filter {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.article-filter button, input {
+  border-radius: 7px;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+.article-filter button, label {
+  margin: 5px 10px;
+}
+
+.article-filter .categories {
+  position: relative;
+  width: 300px;
+  text-align: left;
+}
+
+.article-filter .categories div:hover {
+  cursor: pointer;
+}
+.article-filter .categories ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  width: 100%;
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  background: white;
+  border: 1px solid grey;
+  z-index: 1;
+}

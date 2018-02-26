@@ -1,15 +1,21 @@
-import * as ArticlesAPIUtil from "../util/ArticlesAPIUtil";
-import { receiveErrors } from "./errorActions";
+import * as ArticlesAPIUtil from "../util/articlesAPIUtil.js";
+import { receiveErrors } from "./errorActions.js";
 
 export const RECEIVE_ALL_ARTICLES = "RECEIVE_ALL_ARTICLES";
 export const RECEIVE_ARTICLE = "RECEIVE_ARTICLE";
 
-export const receiveAllArticles = articles => {
-  type: RECEIVE_ALL_ARTICLES, articles;
+export const receiveAllArticles = response => {
+  return {
+    type: RECEIVE_ALL_ARTICLES,
+    articles: response.articles,
+    categories: response.categories,
+  };
 };
 
 export const receiveArticle = article => {
-  type: RECEIVE_ARTICLE, article
+  return {
+    type: RECEIVE_ARTICLE, article
+  };
 };
 
 export const fetchAllArticles = () => async dispatch => {
@@ -17,12 +23,12 @@ export const fetchAllArticles = () => async dispatch => {
   if (response.errors) {
     dispatch(receiveErrors(response.errors));
   } else {
-    dispatch(receiveAllArticles(response.articles));
+    dispatch(receiveAllArticles(response));
   }
 };
 
 export const createArticle = article => async dispatch => {
-  const article = await ArticlesAPIUtil.createArticle(article);
+  const response = await ArticlesAPIUtil.createArticle(article);
   if (response.errors) {
     dispatch(receiveErrors(response.errors));
   } else {
@@ -31,7 +37,7 @@ export const createArticle = article => async dispatch => {
 };
 
 export const fetchArticle = id => async dispatch => {
-  const article = await ArticlesAPIUtil.fetchArticle(id);
+  const response = await ArticlesAPIUtil.fetchArticle(id);
   if (response.errors) {
     dispatch(receiveErrors(response.errors));
   } else {
